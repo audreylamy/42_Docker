@@ -1,1 +1,1 @@
-docker rmi --force $(docker images -q)
+docker rmi --force $(docker images -a -q)
