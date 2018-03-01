@@ -29,6 +29,7 @@ EXPOSE 41144
 
 WORKDIR ${TS_DIRECTORY}
 
+#give token to run teamspeak
 ENTRYPOINT ["./ts3server_minimal_runscript.sh", "createinifile=1"]
 
 #docker build -t alamy/debian:latest $PWD
