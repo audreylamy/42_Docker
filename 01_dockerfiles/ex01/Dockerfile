@@ -3,7 +3,7 @@ FROM    debian:latest
 ENV     TS_VERSION=3.0.13.8
 ENV     TS_DIRECTORY=/opt/teamspeak
 
-#install bzip2 qui permettra de decompresser teamspeak
+#install bzip2 
 RUN     apt-get -y update && \
         apt-get install -y bzip2 && \
         apt-get clean
@@ -21,7 +21,7 @@ RUN     groupadd -g 118 teamspeak && \
         mkdir /data && \
         chown -R teamspeak:teamspeak ${TS_DIRECTORY} /data
 
-#port qui communique avec l'exterieur
+#port 
 EXPOSE 9987/udp
 EXPOSE 30033
 EXPOSE 10011
@@ -29,9 +29,9 @@ EXPOSE 41144
 
 WORKDIR ${TS_DIRECTORY}
 
-#give token to run teamspeak
+#token to run teamspeak
 ENTRYPOINT ["./ts3server_minimal_runscript.sh", "createinifile=1"]
 
-#docker build -t alamy/debian:latest $PWD
+#docker build -t alamy/debian $PWD
 #docker run --name teamspeak -e TS3SERVER_LICENSE=accept -p 9987:9987/udp -p 30033:30033 -p 10011:10011 -p 41144:41144 alamy/debian
 
